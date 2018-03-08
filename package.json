@@ -1,0 +1,31 @@
+{
+  "name": "@dealerslink/node-express-request-utils",
+  "version": "1.0.0",
+  "description": "A library to process HTTP Request parameters and processes",
+  "main": "index.js",
+  "scripts": {
+    "test": "nyc mocha",
+    "build": "gulp",
+    "fix": "gulp fix",
+    "lint": "gulp lint",
+    "coverage": "nyc --reporter=lcov mocha && cat ./coverage/lcov.info | codacy-coverage",
+    "pretty": "gulp pretty"
+  },
+  "author": "Jay Reardon",
+  "dependencies": {
+    "@dealerslink/node-validation-helper": "^1.0.2",
+    "@mediaxpost/lodashext": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "codacy-coverage": "^2.0.3",
+    "eslint": "^4.15.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.1",
+    "gulp-mocha": "^5.0.0",
+    "gulp-prettier": "^1.1.0",
+    "mocha": "^5.0.0",
+    "nyc": "^11.4.1",
+    "prettier": "^1.10.2"
+  }
+}
