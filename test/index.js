@@ -1,7 +1,7 @@
 // test/index.js
 
 // Dependancies
-const __ = require('@mediaxpost/lodashext');
+const __ = require('@dealerslink/lodash-extended');
 const chai = require('chai');
 const expect = chai.expect;
 const ReqUtils = require('../');
