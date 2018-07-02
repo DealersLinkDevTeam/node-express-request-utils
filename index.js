@@ -1,6 +1,6 @@
 // reqUtils.js
 
-const __ = require('@mediaxpost/lodashext');
+const __ = require('@dealerslink/lodash-extended');
 const validator = require('@dealerslink/node-validation-helper');
 
 /**
