@@ -43,14 +43,21 @@ const reqParams = {
   missingRequiredVar: { type: 'string', required: true, source: ['body'] }
 };
 
+const basicDictionary = {
+  TestSummary: 'Test1',
+  TestMessage: 'Test message 1',
+  OK: 'OK',
+  _Blank: ''
+}
+
 const reqUtilOptions = {
   customErrorResponseCodes: {
     ['TestError']: 12345,
     ['OtherTestError']: 98765,
   },
-  customResponseMessages: {
-    [12345]: { summary: 'Test1', message: 'Test message 1', status: 200 },
-    [200000]: { summary: 'OK', message: '', status: 200 }
+  customResponseMessagesKeys: {
+    [12345]: { summary: 'TestSummary', message: 'TestMessage' },
+    [200000]: { summary: 'OK', message: '_Blank' }
   }
 };
 
@@ -60,6 +67,7 @@ describe('Request Utilities', () => {
   let sepParams;
   before((done) => {
     reqUtils = new ReqUtils(req, reqUtilOptions);
+    reqUtils.options.i18n.loadDictionary('en', basicDictionary);
     done();
   });
 
