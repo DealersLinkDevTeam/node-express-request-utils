@@ -1,6 +1,6 @@
 {
   "name": "@dealerslink/node-express-request-utils",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A library to process HTTP Request parameters and processes",
   "main": "index.js",
   "scripts": {
@@ -13,19 +13,20 @@
   },
   "author": "Jay Reardon",
   "dependencies": {
-    "@dealerslink/lodash-extended": "^1.1.0",
+    "@dealerslink/lodash-extended": "^1.1.1",
+    "@dealerslink/node-localization": "^1.1.1",
     "@dealerslink/node-validation-helper": "^1.1.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "codacy-coverage": "^3.0.0",
-    "eslint": "^5.4.0",
+    "chai": "^4.2.0",
+    "codacy-coverage": "^3.4.0",
+    "eslint": "^5.13.0",
     "gulp": "^4.0.0",
     "gulp-eslint": "^5.0.0",
     "gulp-mocha": "^6.0.0",
-    "gulp-prettier": "^2.0.0",
+    "gulp-prettier": "^2.1.0",
     "mocha": "^5.2.0",
-    "nyc": "^13.0.1",
-    "prettier": "^1.14.2"
+    "nyc": "^13.2.0",
+    "prettier": "^1.16.4"
   }
 }
