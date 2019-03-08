@@ -48,7 +48,7 @@ const basicDictionary = {
   TestMessage: 'Test message 1',
   OK: 'OK',
   _Blank: ''
-}
+};
 
 const reqUtilOptions = {
   customErrorResponseCodes: {
