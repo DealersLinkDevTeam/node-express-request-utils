@@ -317,23 +317,25 @@ class ReqUtils {
       const codes = __.merge(__.assign({}, this.options.customErrorResponseCodes), customCodes);
       const messages = __.merge(__.assign({}, this.options.customResponseMessagesKeys), customMessagesKeys);
       // Match error.name to specific response code
-      if (err.name) {
-        if (codes.hasOwnProperty(err.name)) {
-          code = codes[err.name];
+      const name = err.name || err;
+      if (name) {
+        if (codes.hasOwnProperty(name)) {
+          code = codes[name];
         }
       } else {
-        err.name = this.options.i18n.tr('__RequestUtils.NoDetails');
+        name = this.options.i18n.tr('__RequestUtils.NoDetails');
       }
       this.setError(code);
       const custMsg = this.getResponseMessage(code, null, messages);
       if (custMsg && custMsg.summary) {
         msg = custMsg.summary;
       } else {
-        msg = this.options.i18n.tr('__RequestUtils.UnexpectedPlusError', null, err.name);
+        const message = err.message || name || err;
+        msg = this.options.i18n.tr('__RequestUtils.UnexpectedPlusError', null, message);
       }
     }
     let retVal = { msg: msg, code: code };
-    if (err instanceof Error) {
+    if (err instanceof Error || (typeof err === 'object' && err.hasOwnProperty('stack'))) {
       retVal.stack = err.stack;
     }
     return retVal;
