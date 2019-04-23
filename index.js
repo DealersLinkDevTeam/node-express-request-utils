@@ -312,6 +312,7 @@ class ReqUtils {
   handleCustomErrors(err, customCodes, customMessagesKeys) {
     let msg = null;
     let code = 500001;
+    const retVal = {};
 
     if (err) {
       const codes = __.merge(__.assign({}, this.options.customErrorResponseCodes), customCodes);
@@ -337,10 +338,12 @@ class ReqUtils {
         msg = custMsg.summary;
       } else {
         const message = err.message || name || err;
+        retVal.details = message;
         msg = this.options.i18n.tr('__RequestUtils.UnexpectedPlusError', null, message);
       }
     }
-    let retVal = { msg: msg, code: code, detail: message };
+    retVal.msg = msg;
+    retVal.code = code;
     if (err instanceof Error || (typeof err === 'object' && err.hasOwnProperty('stack'))) {
       retVal.stack = err.stack;
     }
