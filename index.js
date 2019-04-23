@@ -340,7 +340,7 @@ class ReqUtils {
         msg = this.options.i18n.tr('__RequestUtils.UnexpectedPlusError', null, message);
       }
     }
-    let retVal = { msg: msg, code: code };
+    let retVal = { msg: msg, code: code, detail: message };
     if (err instanceof Error || (typeof err === 'object' && err.hasOwnProperty('stack'))) {
       retVal.stack = err.stack;
     }
