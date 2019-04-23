@@ -333,12 +333,12 @@ class ReqUtils {
         }
       }
       this.setError(code);
+      const message = err.message || name || err;
+      retVal.details = message;
       const custMsg = this.getResponseMessage(code, null, messages);
       if (custMsg && custMsg.summary) {
         msg = custMsg.summary;
       } else {
-        const message = err.message || name || err;
-        retVal.details = message;
         msg = this.options.i18n.tr('__RequestUtils.UnexpectedPlusError', null, message);
       }
     }
