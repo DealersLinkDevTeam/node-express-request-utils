@@ -316,14 +316,20 @@ class ReqUtils {
     if (err) {
       const codes = __.merge(__.assign({}, this.options.customErrorResponseCodes), customCodes);
       const messages = __.merge(__.assign({}, this.options.customResponseMessagesKeys), customMessagesKeys);
-      // Match error.name to specific response code
       const name = err.name || err;
-      if (name) {
-        if (codes.hasOwnProperty(name)) {
-          code = codes[name];
-        }
+
+      if (err.respCode) {
+        code = err.respCode;
       } else {
-        name = this.options.i18n.tr('__RequestUtils.NoDetails');
+        // Match error.name to specific response code
+        const name = err.name || err;
+        if (name) {
+          if (codes.hasOwnProperty(name)) {
+            code = codes[name];
+          }
+        } else {
+          name = this.options.i18n.tr('__RequestUtils.NoDetails');
+        }
       }
       this.setError(code);
       const custMsg = this.getResponseMessage(code, null, messages);
